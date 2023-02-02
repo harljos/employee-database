@@ -27,9 +27,15 @@ const init = () => {
         .then((data) => {
             switch (data.option) {
                 case "View all departments":
-                    display.displayDepartments(db);
-                    init();    
+                  display.displayDepartments(db);
+                  break;
+                case "View all roles":
+                  display.displayRoles(db);
+                  break;
             }
+        })
+        .then(() => {
+          init();
         })
 }
 
