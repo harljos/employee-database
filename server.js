@@ -1,8 +1,9 @@
 const express = require("express");
 const mysql = require("mysql2");
 const inquirer = require("inquirer");
+const start = require("./src/start");
 
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 const app = express();
 
 app.use(express.urlencoded({ extended: false }));
@@ -17,6 +18,14 @@ const db = mysql.createConnection(
   },
   console.log("connected to the db")
 );
+
+// prompts display when app is initialized
+const init = () => {
+    inquirer
+        .prompt(startPrompts.startPrompts)
+}
+
+init();
 
 app.listen(PORT, () => {
   console.log(`Server is running at port ${PORT}`);
