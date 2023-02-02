@@ -3,7 +3,7 @@ const startPrompts = [
         type: "list",
         message: "Select an option:",
         name: "option",
-        choices: ["view all departments", "view all roles", "view all employees", , "add a role", "add an employee", "update an employee role"]
+        choices: ["View all departments", "View all roles", "View all employees", "Add a role", "Add an employee", "Update an employee role"]
     }
 ]
 

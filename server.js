@@ -2,6 +2,7 @@ const express = require("express");
 const mysql = require("mysql2");
 const inquirer = require("inquirer");
 const start = require("./src/start");
+const display = require("./src/display");
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -14,7 +15,7 @@ const db = mysql.createConnection(
     host: "localhost",
     user: "root",
     password: "root1234",
-    database: "books_db"
+    database: "employee_db"
   },
   console.log("connected to the db")
 );
@@ -22,7 +23,14 @@ const db = mysql.createConnection(
 // prompts display when app is initialized
 const init = () => {
     inquirer
-        .prompt(startPrompts.startPrompts)
+        .prompt(start.startPrompts)
+        .then((data) => {
+            switch (data.option) {
+                case "View all departments":
+                    display.displayDepartments(db);
+                    init();    
+            }
+        })
 }
 
 init();
