@@ -32,6 +32,9 @@ const init = () => {
                 case "View all roles":
                   display.displayRoles(db);
                   break;
+                case "View all employees":
+                  display.displayEmployees(db);
+                  break;
             }
         })
         .then(() => {
