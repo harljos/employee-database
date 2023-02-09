@@ -7,7 +7,7 @@ const displayDepartments = (db) => {
         else {
             console.table(results);
         }
-    });
+    })
 }
 
 // displays all roles on a table
