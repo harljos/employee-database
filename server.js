@@ -4,6 +4,7 @@ const inquirer = require("inquirer");
 const start = require("./src/start");
 const display = require("./src/display");
 const add = require("./src/add");
+const get = require("./src/get");
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -39,6 +40,9 @@ const init = () => {
               case "Add a department":
                 add.addDepartment(db);
                 break;
+              case "Add a role":
+                add.addRole(db);
+                break;
             }
         })
         // .then(() => {
@@ -46,8 +50,9 @@ const init = () => {
         // })
 }
 
+get.getDepartments(db);
+get.getEmployees(db);
 // init();
-start.displayPrompt(db);
 
 app.listen(PORT, () => {
   console.log(`Server is running at port ${PORT}`);
