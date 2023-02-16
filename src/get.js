@@ -6,8 +6,21 @@ const getDepartments = (db) => {
         }
         else {
             const departments = results.map(deparmtent => deparmtent.name);
-            console.log(departments);
             return departments;
+        }
+    });
+}
+
+// gets all roles and puts them in an array
+const getRoles = (db) => {
+    db.query("SELECT title FROM role", function (err, results) {
+        if (err) {
+            console.log(err);
+        }
+        else {
+            const roles = results.map(role => role.title);
+            console.log(roles);
+            return roles;
         }
     });
 }
@@ -22,13 +35,12 @@ const getEmployees = (db) => {
             const employees = results.map(employee => {
                 return `${employee.first_name} ${employee.last_name}`;
             });
-            console.log(employees);
             return employees;
         }
     });
 }
 
-// gets index of department
+// gets index of department name
 const getIndexDepartment = (db, deparmtent) => {
     const deparmtents = getDepartments(db);
     for (let i = 0; deparmtents.length; i++) {
@@ -38,8 +50,32 @@ const getIndexDepartment = (db, deparmtent) => {
     }
 }
 
+// gets index of role title
+const getIndexRole = (db, role) => {
+    const roles = getRoles(db);
+    for (let i = 0; roles.length; i++) {
+        if (roles[i] = role) {
+            return i;
+        }
+    }
+}
+
+// gets index of employee
+const getIndexEmployee = (db, employee) => {
+    const employees = getEmployees(db);
+    for (let i = 0; employees.length; i++) {
+        if (employees[i] = employee) {
+            return i;
+        }
+    }
+    return null;
+}
+
 module.exports = {
     getDepartments,
+    getRoles,
     getEmployees,
-    getIndexDepartment
+    getIndexDepartment,
+    getIndexRole,
+    getIndexEmployee
 }

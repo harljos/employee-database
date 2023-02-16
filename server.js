@@ -43,6 +43,9 @@ const init = () => {
               case "Add a role":
                 add.addRole(db);
                 break;
+              case "Add an employee":
+                add.addEmployee(db);
+                break;
             }
         })
         // .then(() => {
@@ -50,8 +53,6 @@ const init = () => {
         // })
 }
 
-get.getDepartments(db);
-get.getEmployees(db);
 // init();
 
 app.listen(PORT, () => {
