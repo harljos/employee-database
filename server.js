@@ -4,7 +4,7 @@ const inquirer = require("inquirer");
 const start = require("./src/start");
 const display = require("./src/display");
 const add = require("./src/add");
-const get = require("./src/get");
+const update = require("./src/update");
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -45,6 +45,9 @@ const init = () => {
                 break;
               case "Add an employee":
                 add.addEmployee(db);
+                break;
+              case "Update an employee role":
+                update.updateEmployee(db);
                 break;
             }
         })

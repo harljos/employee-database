@@ -67,7 +67,7 @@ const addEmployee = (db) => {
         },
         {
             type: "list",
-            message: "Slect the role the employee has:",
+            message: "Select the role the employee has:",
             name: "role",
             choices: get.getRoles(db)
         },
